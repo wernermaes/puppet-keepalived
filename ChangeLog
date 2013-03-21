@@ -1,3 +1,6 @@
+2013-03-21 - 0.1.1
+* New params.pp in order to support Gentoo.
+
 2013-03-08 - 0.1.0
 * Update README and use markdown.
 

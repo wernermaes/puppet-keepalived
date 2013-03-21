@@ -20,36 +20,48 @@ class keepalived (
   $content = undef,
   $source  = undef,
   $options = '-D'
-) {
+) inherits keepalived::params {
 
-  package { 'keepalived': ensure => installed }
+  package { $keepalived::params::package: ensure => installed }
 
-  service { 'keepalived':
+  service { $keepalived::params::service:
     enable    => true,
     ensure    => running,
-    # "service keepalived status" always returns 0 even when stopped
+    # "service keepalived status" always returns 0 even when stopped on RHEL
     #hasstatus => true,
-    require   => Package['keepalived'],
+    require   => Package[$keepalived::params::package],
+  }
+
+  File {
+    notify  => Service[$keepalived::params::service],
+    require => Package[$keepalived::params::package],
   }
 
   # Optionally managed main configuration file
   if $content or $source {
-    file { '/etc/keepalived/keepalived.conf':
+    file { "${confdir}/keepalived.conf":
       content => $content,
       source  => $source,
       owner   => 'root',
       group   => 'root',
       mode    => '0644',
-      notify  => Service['keepalived'],
-      require => Package['keepalived'],
     }
   }
 
-  # Configuration for VRRP/LVS disabling
-  file { '/etc/sysconfig/keepalived':
-    content => template('keepalived/sysconfig.erb'),
-    notify  => Service['keepalived'],
-    require => Package['keepalived'],
+  case $keepalived::params::conf {
+    'sysconfig': {
+      # Configuration for VRRP/LVS disabling
+      file { '/etc/sysconfig/keepalived':
+        content => template('keepalived/sysconfig.erb'),
+      }
+    }
+    'confd': {
+      # Configuration for VRRP/LVS disabling
+      file { '/etc/conf.d/keepalived':
+        content => template('keepalived/conf.d.erb'),
+      }
+    }
+    false: {}
   }
 
 }
