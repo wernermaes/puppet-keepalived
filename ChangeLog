@@ -1,3 +1,5 @@
+* Fix syntax error in the test.
+
 2013-04-19 - 0.1.2
 * Use @varname syntax in templates to silence puppet 3.2 warnings.
 
