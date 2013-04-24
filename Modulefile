@@ -5,4 +5,4 @@ author 'Matthias Saou'
 license 'Apache 2.0'
 summary 'Keepalived module'
 description "Install, enable and configure the keepalived VRRP and LVS management daemon."
-project_page 'https://github.com/thias/puppet-keepalived''
+project_page 'https://github.com/thias/puppet-keepalived'
