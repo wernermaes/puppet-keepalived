@@ -1,3 +1,5 @@
+* Update Gentoo conf.d template for the 1.2.7 package.
+
 2013-07-18 - 0.1.3
 * Fix syntax error in the test.
 * Fix missing @ prefix for the conf.d template variable.
