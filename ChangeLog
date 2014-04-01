@@ -1,3 +1,6 @@
+* Add service_enable and service_ensure parameters.
+* Clean up params class and the way the sysconf file is installed.
+
 2013-12-10 - 0.1.4
 * Update Gentoo conf.d template for the 1.2.7 package.
 
