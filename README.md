@@ -17,16 +17,20 @@ See the `templates/sysconfig.erb` file for the possible `$options` values.
 Typical installation for VRRP only (no LVS), using a static existing
 configuration file :
 
-    class { 'keepalived':
-      source  => 'puppet:///mymodule/keepalived.conf',
-      options => '-D --vrrp',
-    }
+```puppet
+class { '::keepalived':
+  source  => 'puppet:///mymodule/keepalived.conf',
+  options => '-D --vrrp',
+}
+```
 
 Similar to the above, but using a template, which can be useful with multiple
 servers which will be part of the same VRRP group and/or have the same LVS
 configuration :
 
-    class { 'keepalived':
-      content => template('mymodule/keepalived.conf.erb'),
-    }
+```puppet
+class { '::keepalived':
+  content => template('mymodule/keepalived.conf.erb'),
+}
+```
 
