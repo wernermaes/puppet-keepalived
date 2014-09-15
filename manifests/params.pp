@@ -13,7 +13,7 @@ class keepalived::params {
       $package    = 'sys-cluster/keepalived'
       $sysconfdir = 'conf.d'
     }
-    'RedHat','Fedora','CentOS': {
+    'RedHat','Fedora','CentOS','Scientific','Amazon': {
       $package    = 'keepalived'
       $sysconfdir = 'sysconfig'
     }

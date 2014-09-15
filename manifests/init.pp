@@ -22,16 +22,15 @@ class keepalived (
   $options        = '-D',
   $service_enable = true,
   $service_ensure = 'running',
+  $package_ensure = 'installed',
 ) inherits ::keepalived::params {
 
-  package { $::keepalived::params::package: ensure => installed }
+  package { $::keepalived::params::package: ensure => $package_ensure }
 
   service { $::keepalived::params::service:
-    enable    => $service_enable,
-    ensure    => $service_ensure,
-    # "service keepalived status" always returns 0 even when stopped on RHEL
-    #hasstatus => true,
-    require   => Package[$::keepalived::params::package],
+    enable  => $service_enable,
+    ensure  => $service_ensure,
+    require => Package[$::keepalived::params::package],
   }
 
   File {

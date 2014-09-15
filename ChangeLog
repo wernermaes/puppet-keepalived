@@ -1,3 +1,7 @@
+* Update README.
+* Add package_ensure parameter, defaulting to 'installed'.
+* Add 'Scientific' and 'Amazon' to params class.
+
 2014-04-01 - 0.1.5
 * Add service_enable and service_ensure parameters.
 * Clean up params class and the way the sysconf file is installed.

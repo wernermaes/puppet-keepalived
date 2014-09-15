@@ -10,7 +10,8 @@ The configuration file to be used can be specificed using either the `$content`
 parameter (typically for templates), or the `$source` parameter. If neither is
 specified, you will need to manage it rom elsewhere.
 
-See the `templates/sysconfig.erb` file for the possible `$options` values.
+See the `templates/sysconfig.erb` file for the possible `$options` values. The
+default is `-D` which enables both VRRP and LVS.
 
 ## Examples
 
@@ -19,7 +20,7 @@ configuration file :
 
 ```puppet
 class { '::keepalived':
-  source  => 'puppet:///mymodule/keepalived.conf',
+  source  => "puppet:///${module_name}/keepalived.conf",
   options => '-D --vrrp',
 }
 ```
@@ -30,7 +31,7 @@ configuration :
 
 ```puppet
 class { '::keepalived':
-  content => template('mymodule/keepalived.conf.erb'),
+  content => template("${module_name}/keepalived.conf.erb"),
 }
 ```
 
