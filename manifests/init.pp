@@ -20,7 +20,7 @@ class keepalived (
   $content        = undef,
   $source         = undef,
   $service        = $::keepalived::params::service,
-  $confdir        = $::keepalived::params:confdir,
+  $confdir        = $::keepalived::params::confdir,
   $package        = $::keepalived::params::package,
   $sysconfdir     = $::keepalived::params::sysconfdir,
   $options        = '-D',
