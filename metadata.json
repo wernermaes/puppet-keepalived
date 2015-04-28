@@ -1,6 +1,6 @@
 {
   "name": "thias-keepalived",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Matthias Saou",
   "license": "Apache-2.0",
   "summary": "Keepalived module, for both or either of LVS and VRRP.",

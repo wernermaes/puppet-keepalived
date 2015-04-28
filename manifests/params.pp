@@ -19,6 +19,7 @@ class keepalived::params {
     }
     default: {
       $package    = 'keepalived'
+      $sysconfdir = undef
     }
   }
 

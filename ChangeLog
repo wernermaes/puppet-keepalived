@@ -1,3 +1,6 @@
+#### 2015-04-28 - 1.0.2
+* Make puppet-lint happy.
+
 #### 2015-04-28 - 1.0.1
 * Add useful keepalived::vrrp wrapper class with typical template.
 * Replace Modulefile with metadata.json.

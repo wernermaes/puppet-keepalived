@@ -19,23 +19,27 @@
 class keepalived (
   $content        = undef,
   $source         = undef,
+  $service        = $::keepalived::params::service,
+  $confdir        = $::keepalived::params:confdir,
+  $package        = $::keepalived::params::package,
+  $sysconfdir     = $::keepalived::params::sysconfdir,
   $options        = '-D',
   $service_enable = true,
   $service_ensure = 'running',
   $package_ensure = 'installed',
 ) inherits ::keepalived::params {
 
-  package { $::keepalived::params::package: ensure => $package_ensure }
+  package { $package: ensure => $package_ensure }
 
-  service { $::keepalived::params::service:
-    enable  => $service_enable,
+  service { $service:
     ensure  => $service_ensure,
-    require => Package[$::keepalived::params::package],
+    enable  => $service_enable,
+    require => Package[$package],
   }
 
   File {
-    notify  => Service[$::keepalived::params::service],
-    require => Package[$::keepalived::params::package],
+    notify  => Service[$service],
+    require => Package[$package],
   }
 
   # Optionally managed main configuration file
@@ -49,7 +53,6 @@ class keepalived (
     }
   }
 
-  $sysconfdir = $::keepalived::params::sysconfdir
   if $sysconfdir == 'sysconfig' or $sysconfdir == 'conf.d' {
     # Configuration for VRRP/LVS disabling
     file { "/etc/${sysconfdir}/keepalived":
