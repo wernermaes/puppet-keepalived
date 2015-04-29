@@ -10,16 +10,24 @@ class keepalived::params {
   # We can't use osfamily since Gentoo's is 'Linux'
   case $::operatingsystem {
     'Gentoo': {
-      $package    = 'sys-cluster/keepalived'
-      $sysconfdir = 'conf.d'
+      $package           = 'sys-cluster/keepalived'
+      $sysconfdir        = 'conf.d'
+      $service_hasstatus = true
     }
     'RedHat','Fedora','CentOS','Scientific','Amazon': {
-      $package    = 'keepalived'
-      $sysconfdir = 'sysconfig'
+      $package           = 'keepalived'
+      $sysconfdir        = 'sysconfig'
+      $service_hasstatus = true
+    }
+    'Debian', 'Ubuntu': {
+      $package           = 'keepalived'
+      $sysconfdir        = undef
+      $service_hasstatus = false
     }
     default: {
-      $package    = 'keepalived'
-      $sysconfdir = undef
+      $package           = 'keepalived'
+      $sysconfdir        = undef
+      $service_hasstatus = true
     }
   }
 
