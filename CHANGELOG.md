@@ -1,3 +1,5 @@
+* Add Debian support (#1, @nono-gdv).
+
 #### 2015-04-28 - 1.0.3
 * I need to stop trying to make puppet-lint happy.
 
