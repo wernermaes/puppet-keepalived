@@ -17,24 +17,26 @@
 #  }
 #
 class keepalived (
-  $content        = undef,
-  $source         = undef,
-  $service        = $::keepalived::params::service,
-  $confdir        = $::keepalived::params::confdir,
-  $package        = $::keepalived::params::package,
-  $sysconfdir     = $::keepalived::params::sysconfdir,
-  $options        = '-D',
-  $service_enable = true,
-  $service_ensure = 'running',
-  $package_ensure = 'installed',
+  $content           = undef,
+  $source            = undef,
+  $service           = $::keepalived::params::service,
+  $confdir           = $::keepalived::params::confdir,
+  $package           = $::keepalived::params::package,
+  $sysconfdir        = $::keepalived::params::sysconfdir,
+  $options           = '-D',
+  $service_enable    = true,
+  $service_ensure    = 'running',
+  $service_hasstatus = $::keepalived::params::service_hasstatus,
+  $package_ensure    = 'installed',
 ) inherits ::keepalived::params {
 
   package { $package: ensure => $package_ensure }
 
   service { $service:
-    ensure  => $service_ensure,
-    enable  => $service_enable,
-    require => Package[$package],
+    ensure    => $service_ensure,
+    enable    => $service_enable,
+    require   => Package[$package],
+    hasstatus => $service_hasstatus,
   }
 
   File {
