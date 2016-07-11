@@ -1,13 +1,13 @@
 {
   "name": "thias-keepalived",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": "Matthias Saou",
   "license": "Apache-2.0",
   "summary": "Keepalived module, for both or either of LVS and VRRP.",
   "source": "git://github.com/thias/puppet-keepalived",
   "project_page": "https://github.com/thias/puppet-keepalived",
   "issues_url": "https://github.com/thias/puppet-keepalived/issues",
-  "tags": ["keepalived", "lvs", "vrrp"],
+  "tags": ["keepalive", "lvs", "vrrp"],
   "operatingsystem_support": [
     {
     "operatingsystem": "RedHat",
@@ -27,8 +27,12 @@
   ],
   "requirements": [
     {
+      "name": "pe",
+      "version_requirement": ">=3.0.0 <=2015.4.0"
+    },
+    {
     "name": "puppet",
-    "version_requirement": ">=2.7.20 <4.1.0"
+    "version_requirement": ">=2.7.20 <5.0.0"
     }
   ],
   "dependencies": []
