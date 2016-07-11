@@ -6,6 +6,7 @@ class keepalived::params {
 
   $service = 'keepalived'
   $confdir = '/etc/keepalived'
+  $service_restart = "/sbin/service ${service} reload"
 
   # We can't use osfamily since Gentoo's is 'Linux'
   case $::operatingsystem {

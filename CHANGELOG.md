@@ -1,4 +1,5 @@
 * Add Debian support (#1, @nono-gdv).
+* Reload for service by default, as restart seems to often fail with LVS.
 
 #### 2015-04-28 - 1.0.3
 * I need to stop trying to make puppet-lint happy.

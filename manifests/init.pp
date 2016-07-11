@@ -27,6 +27,7 @@ class keepalived (
   $service_enable    = true,
   $service_ensure    = 'running',
   $service_hasstatus = $::keepalived::params::service_hasstatus,
+  $service_restart   = $::keepalived::params::service_restart,
   $package_ensure    = 'installed',
 ) inherits ::keepalived::params {
 
@@ -37,6 +38,7 @@ class keepalived (
     enable    => $service_enable,
     require   => Package[$package],
     hasstatus => $service_hasstatus,
+    restart   => $service_restart,
   }
 
   File {
