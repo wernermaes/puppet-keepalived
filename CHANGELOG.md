@@ -1,3 +1,5 @@
+* Remove legacy facts usage.
+
 #### 2016-07-11 - 1.0.5
 * Reload for service by default, as restart seems to often fail with LVS.
 

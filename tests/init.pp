@@ -1,6 +1,6 @@
 class { '::keepalived::vrrp':
   global_defs => {
-    router_id => $::hostname,
+    router_id => $facts['networking']['hostname'],
   },
   instances => {
     web => {
