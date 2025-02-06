@@ -19,7 +19,29 @@ global_defs {
   <%- end -%>
  <%- end -%>
 }
-<%- @instances.sort_by {|iname,idata| iname}.each do |iname,idata| -%>
+<% @scripts.sort_by {|iname,idata| iname}.each do |iname,idata| -%>
+
+vrrp_script <%= iname %> {
+ <%- idata.sort_by {|key,value| key}.each do |key,value| -%>
+  <%- if value.is_a?(Hash) -%>
+  <%= key %> {
+   <%- value.sort_by {|k,v| k}.each do |k,v| -%>
+    <%= k %> <%= v %>
+   <%- end -%>
+  }
+  <%- elsif value.is_a?(Array) -%>
+  <%= key %> {
+   <%- value.each do |v| -%>
+    <%= v %>
+   <%- end -%>
+  }
+  <%- else -%>
+  <%= key %> <%= value %>
+  <%- end -%>
+ <%- end -%>
+}
+<% end -%>
+<% @instances.sort_by {|iname,idata| iname}.each do |iname,idata| -%>
 
 vrrp_instance <%= iname %> {
  <%- idata.sort_by {|key,value| key}.each do |key,value| -%>

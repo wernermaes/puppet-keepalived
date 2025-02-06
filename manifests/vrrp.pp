@@ -5,6 +5,7 @@
 #
 class keepalived::vrrp (
   $instances,
+  $scripts              = {},
   $global_defs          = {},
   $global_defs_defaults = {},
   $service_ensure       = 'running',

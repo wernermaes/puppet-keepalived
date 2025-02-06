@@ -1,3 +1,5 @@
+* Support vrrp_script entries with a new scripts parameter.
+
 #### 2025-02-04 - 1.0.6
 * Remove legacy facts usage.
 
