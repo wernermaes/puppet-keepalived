@@ -16,12 +16,14 @@ class keepalived::vrrp (
 ) {
 
   $global_defs_final = merge($global_defs_defaults,$global_defs)
-
+  $instances_normalized = $instances =~ Hash ? $instances.values : $instances
+  
   class { '::keepalived':
     service_ensure => $service_ensure,
     service_enable => $service_enable,
     content        => template("${template_module}${template_dir}${template}"),
     options        => '-D --vrrp',
+    instances      => $instances_normalized,
   }
 
 }
